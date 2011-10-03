@@ -169,6 +169,8 @@ class CakeHtmlReporter extends CakeBaseReporter {
  * @access public
  */
 	function paintFooter($test_name) {
+		$this->paintErrorSaxGuy($this->getFailCount());
+
 		$colour = ($this->getFailCount() + $this->getExceptionCount() > 0 ? "red" : "green");
 		echo "</ul>\n";
 		echo "<div style=\"";
@@ -194,7 +196,15 @@ class CakeHtmlReporter extends CakeBaseReporter {
 		) {
 			CodeCoverageManager::report();
 		}
+
+
 		$this->paintDocumentEnd();
+	}
+
+	private function paintErrorSaxGuy($count = 0) {
+		if($count) {
+			echo '<object width="640" height="480"><param name="movie" value="http://www.youtube.com/v/KHy7DGLTt8g&autoplay=1"></param><embed src="http://www.youtube.com/v/KHy7DGLTt8g&autoplay=1" type="application/x-shockwave-flash" width="640" height="480"></embed></object>';
+		}
 	}
 
 /**
